@@ -47,6 +47,8 @@ libraryDependencies += "org.zapodot" % "embedded-ldap-junit" % "0.5.2"
 import com.unboundid.ldap.sdk.LDAPInterface;
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
+import org.junit.Rule;
+import org.junit.Test;
 ...
 
 @Rule
@@ -59,7 +61,7 @@ public EmbeddedLdapRule embeddedLdapRule = EmbeddedLdapRuleBuilder
 @Test
 public void testLdapInteface() throws Exception {
     // Test using the UnboundID LDAP SDK directly
-    final LdapInterface ldapConnection = embeddedLdapRule.ldapConnection();
+    final LDAPInterface ldapConnection = embeddedLdapRule.ldapConnection();
     final SearchResult searchResult = ldapConnection.search(DOMAIN_DSN, SearchScope.SUB, "(objectClass=person)");
     assertEquals(1, searchResult.getEntryCount());
 }
